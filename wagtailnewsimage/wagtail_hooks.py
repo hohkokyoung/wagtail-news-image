@@ -3,7 +3,7 @@ Register the image block with Wagtail.
 """
 import json
 
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.html import format_html_join
 from wagtail.admin.rich_text.editors.draftail.features import EntityFeature
