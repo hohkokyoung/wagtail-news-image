@@ -49,8 +49,8 @@ def register_embed_features(features):
         'icon': 'image',
     }
 
-    # Register embed
-    features.register_embed_type(block_name, news_image_embedtype_handler)
+    # # Register embed
+    # features.register_embed_type(block_name, news_image_embedtype_handler)
 
     # Register new editor feature with Draftail frontend
     features.register_editor_plugin('draftail', block_name, EntityFeature(feature_data))
