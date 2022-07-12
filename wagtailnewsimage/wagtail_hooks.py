@@ -6,7 +6,7 @@ import json
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.html import format_html_join
-from wagtail.admin.rich_text.editors.draftail.features import EntityFeature
+from wagtail.admin.rich_text.editors.draftail.features import EntityFeature, draftail_features
 from wagtail.core import hooks
 
 from .rich_text import NewsImageEntityElementHandler, news_image_embedtype_handler, news_image_entity_decorator
@@ -53,7 +53,11 @@ def register_embed_features(features):
     # features.register_embed_type(block_name, news_image_embedtype_handler)
 
     # Register new editor feature with Draftail frontend
-    features.register_editor_plugin('draftail', block_name, EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js']))
+    features.register_editor_plugin(
+        'draftail', 
+        block_name, 
+        draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js'])
+    )
 
     # Register conversion rules Wagtail backend
     features.register_converter_rule('contentstate', block_name, {
