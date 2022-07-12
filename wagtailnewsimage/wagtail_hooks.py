@@ -56,12 +56,22 @@ def register_embed_features(features):
     print("debug in process")
     print(draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js']))
 
-    # Register new editor feature with Draftail frontend
-    features.register_editor_plugin(
-        'draftail', 
-        block_name, 
-        draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js'])
-    )
+    try:
+        features.register_editor_plugin(
+            'draftail', 
+            block_name, 
+            draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js'])
+        )
+    except Exception as error:
+        print(error)
+
+
+    # # Register new editor feature with Draftail frontend
+    # features.register_editor_plugin(
+    #     'draftail', 
+    #     block_name, 
+    #     draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js'])
+    # )
 
     # Register conversion rules Wagtail backend
     features.register_converter_rule('contentstate', block_name, {
