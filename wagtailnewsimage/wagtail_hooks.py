@@ -64,13 +64,18 @@ def register_embed_features(features):
     )
 
     # Register conversion rules Wagtail backend
-    features.register_converter_rule('contentstate', block_name, {
-        'from_database_format': {
-            'embed[embedtype="news-image"]': NewsImageEntityElementHandler()
-        },
-        'to_database_format': {
-            'entity_decorators': {
-                block_type: news_image_entity_decorator
-            }
-        },
-    })
+    try:
+        features.register_converter_rule('contentstate', block_name, {
+            'from_database_format': {
+                'embed[embedtype="news-image"]': NewsImageEntityElementHandler()
+            },
+            'to_database_format': {
+                'entity_decorators': {
+                    block_type: news_image_entity_decorator
+                }
+            },
+        })
+        print("success?")
+    except Exception as error:
+        print("FAIL!!!")
+        print(error)
