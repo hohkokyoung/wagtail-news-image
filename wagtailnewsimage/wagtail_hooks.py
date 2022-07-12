@@ -54,28 +54,23 @@ def register_embed_features(features):
     # features.register_embed_type(block_name, news_image_embedtype_handler)
 
     print("debug in process")
-    print(draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js']))
+    print(draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/js/wagtailnewsimage.js']))
 
     # Register new editor feature with Draftail frontend
     features.register_editor_plugin(
         'draftail', 
         block_name, 
-        draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js'])
+        draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/js/wagtailnewsimage.js'])
     )
 
     # Register conversion rules Wagtail backend
-    try:
-        features.register_converter_rule('contentstate', block_name, {
-            'from_database_format': {
-                'embed[embedtype="news-image"]': NewsImageEntityElementHandler()
-            },
-            'to_database_format': {
-                'entity_decorators': {
-                    block_type: news_image_entity_decorator
-                }
-            },
-        })
-        print("success?")
-    except Exception as error:
-        print("FAIL!!!")
-        print(error)
+    features.register_converter_rule('contentstate', block_name, {
+        'from_database_format': {
+            'embed[embedtype="news-image"]': NewsImageEntityElementHandler()
+        },
+        'to_database_format': {
+            'entity_decorators': {
+                block_type: news_image_entity_decorator
+            }
+        },
+    })
