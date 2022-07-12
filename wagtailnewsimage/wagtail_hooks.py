@@ -53,6 +53,8 @@ def register_embed_features(features):
     # # Register embed
     # features.register_embed_type(block_name, news_image_embedtype_handler)
 
+    print(draftail_features.EntityFeature(feature_data, js=['wagtailadmin/js/draftail.js', 'wagtailnewsimage/wagtailnewsimage.js']))
+
     # Register new editor feature with Draftail frontend
     features.register_editor_plugin(
         'draftail', 
