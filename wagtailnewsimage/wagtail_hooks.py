@@ -6,7 +6,8 @@ import json
 from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.html import format_html_join
-from wagtail.admin.rich_text.editors.draftail.features import EntityFeature, draftail_features
+# from wagtail.admin.rich_text.editors.draftail.features import EntityFeature, draftail_features
+import wagtail.admin.rich_text.editors.draftail.features as draftail_features
 from wagtail.core import hooks
 
 from .rich_text import NewsImageEntityElementHandler, news_image_embedtype_handler, news_image_entity_decorator
